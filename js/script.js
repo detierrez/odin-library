@@ -130,6 +130,15 @@ for (const book of sampleBooks) {
 
 const cards = document.querySelector(".cards");
 const spanBookCount = document.querySelector(".book-count");
+const dialog = document.querySelector("dialog");
+const btnOpenDialog = document.querySelector(".body-head button");
+const btnCloseDialog = document.querySelector("dialog button[type='button']");
+const btnAddBook = document.querySelector("dialog button[type='submit']");
+
+btnOpenDialog.addEventListener("click", openDialog);
+btnCloseDialog.addEventListener("click", closeDialog);
+btnAddBook.addEventListener("click", userAddBook);
+
 spanBookCount.textContent = 0;
 
 function addBookHTML(book) {
@@ -208,4 +217,34 @@ function toggleIsRead(e) {
   const btnText = book.isRead ? "Read" : "Unread";
   btn.childNodes[0].setAttribute("src", iconPath);
   btn.childNodes[1].textContent = btnText;
+}
+
+function openDialog() {
+  const inputs = document.querySelectorAll("form input, select, textarea");
+  for (const input of inputs) {
+    input.value = "";
+  }
+  document.querySelector("form textarea").textContent = "";
+
+  dialog.showModal();
+}
+
+function closeDialog() {
+  dialog.close();
+}
+
+function userAddBook() {
+  const title = document.querySelector("#title").value;
+  const author = document.querySelector("#author").value;
+  const year = document.querySelector("#year").value;
+  const genre = document.querySelector("#genre").value;
+  const description = document.querySelector("#description").value;
+  const url = document.querySelector("#url").value;
+
+  console.log(description)
+
+  const newBook = new Book(title, author, year, genre, description, url);
+
+  addBookToLibrary(newBook);
+  addBookHTML(newBook);
 }

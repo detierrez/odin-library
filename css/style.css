@@ -230,3 +230,73 @@ body {
     }
   }
 }
+
+dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+
+  background-color: #f5ecd9;
+  border: 1px solid #e0d0b2;
+  border-radius: 0.75em;
+  padding: 4%;
+  width: min(500px, 60vw);
+}
+
+::backdrop {
+  background-color: #7775;
+  backdrop-filter: blur(1px);
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0em 1em;
+
+  * {
+    padding: 0.25em 0.5em;
+    border-radius: 0.3em;
+    min-width: 0px;
+  }
+
+  input,
+  select,
+  textarea {
+    border-style: none;
+    background-color: #fff;
+    border: 1px solid #e0d0b2;
+    height: 2em;
+  }
+
+  textarea {
+    height: 4em;
+  }
+
+  & > button[type="button"] {
+    background-color: #c25858;
+    justify-self: end;
+  }
+
+  & > :has(textarea) {
+    grid-column: 1 / -1;
+  }
+  & > :has([type="url"]) {
+    grid-column: 1 / -1;
+  }
+  button {
+    color: #fff;
+    grid-column: 1 / -1;
+  }
+
+  & > button[type="submit"] {
+    background-color: #273629;
+    margin-top: 0.75rem;
+    place-self: center;
+  }
+}
+
+.form-field {
+  display: grid;
+}
