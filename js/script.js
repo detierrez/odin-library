@@ -1,5 +1,5 @@
 import Library from "./library.js";
-import books from "../assets/books.json" with { type: "json" };
+import books from "../assets/data/books.json" with { type: "json" };
 
 class DOMController {
   ICONS_PATH = "./assets/img/";
